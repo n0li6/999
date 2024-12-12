@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"> <!-- Устанавливает кодировку документа в UTF-8 для поддержки русского языка -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Оптимизирует сайт для мобильных устройств -->
+    <title>Сайт о машинах</title> <!-- Устанавливает заголовок страницы -->
+    <style>
+        /* Оформление текста */
+        #text-block {
+            border: 2px solid black; /* Чёрная рамка вокруг блока */
+            margin: 2cm 1cm; /* Отступы: сверху/снизу 2см, слева 3см, справа 1см */
+            padding-left: 1.5cm; /* Внутренний отступ слева */
+            background-color: #d3d3d3; /* Светло-серый фон */
+            font-family: 'Times New Roman', Times, serif; /* Шрифт текста */
+            font-size: 14pt; /* Размер текста */
+        }
+
+        #text-block::first-letter {
+            font-size: 18pt; /* Увеличивает первую букву текста */
+            font-weight: bold; /* Делает первую букву жирной */
+        }
+
+        /* Оформление таблицы */
+        #car-table {
+            width: 100%; /* Таблица занимает всю ширину страницы */
+            border-collapse: collapse; /* Убирает двойные линии между ячейками */
+        }
+
+        #car-table th {
+            text-align: center; /* Центрирует текст в заголовке таблицы */
+            background-color: lightgray; /* Серый фон для заголовка таблицы */
+            cursor: pointer; /* Указывает на то, что заголовок можно кликать для сортировки */
+        }
+
+        #car-table td {
+            padding: 8px; /* Внутренний отступ внутри ячеек таблицы */
+            border: 1px solid black; /* Чёрная рамка вокруг ячеек таблицы */
+        }
+
+        #car-table tr:hover {
+            background-color: #e0e0e0; /* Изменяет фон строки при наведении */
+        }
+
+        /* Стили для четных и нечетных столбцов */
+        #car-table td:nth-child(odd) {
+            background-color: white; /* Белый фон для нечетных столбцов */
+        }
+
+        #car-table td:nth-child(even) {
+            background-color: #f2f2f2; /* Светло-серый фон для четных столбцов */
+            text-align: center; /* Центрирует текст в четных столбцах */
+        }
+
+        /* Обтекание изображения текстом */
+        #car-image {
+            float: right; /* Располагает изображение справа от текста */
+            margin: 0 0 10px 10px; /* Отступы вокруг изображения */
+        }
+
+        /* Стили ссылок */
+        a:link {
+            color: blue; /* Цвет для ссылок, которые ещё не посещались */
+        }
+
+        a:visited {
+            color: purple; /* Цвет для посещённых ссылок */
+        }
+
+        a:hover {
+            color: red; /* Цвет ссылки при наведении мыши */
+        }
+
+        /* Списки */
+        ul {
+            list-style-type: square; /* Тип маркеров списка: квадраты */
+            padding-left: 20px; /* Отступ слева для списка */
+        }
+
+        ul li::marker {
+            color: green; /* Цвет маркеров списка */
+        }
+
+        .car-list-item {
+            color: darkgreen; /* Цвет текста пунктов списка */
+        }
+
+        .car-link {
+            text-decoration: none; /* Убирает подчёркивание ссылок */
+            color: darkblue; /* Цвет текста ссылок */
+        }
+
+        .car-link:hover {
+            text-decoration: underline; /* Подчёркивает ссылку при наведении */
+            color: orange; /* Меняет цвет ссылки при наведении */
+        }
+
+        /* Заголовок */
+        #header {
+            text-align: center; /* Центрирует заголовок */
+            font-size: 24pt; /* Размер шрифта заголовка */
+            text-shadow: 2px 2px 5px gray; /* Добавляет тень к тексту заголовка */
+            background: linear-gradient(to right, lightblue, blue); /* Градиентный фон */
+            padding: 10px; /* Внутренний отступ для заголовка */
+            color: white; /* Цвет текста */
+        }
+
+        /* Баннер */
+        #car-banner {
+            position: relative; /* Устанавливает относительное позиционирование */
+            left: 50px; /* Смещает баннер вправо на 50 пикселей */
+            top: 20px; /* Смещает баннер вниз на 20 пикселей */
+            border: 2px solid red; /* Добавляет красную рамку */
+            padding: 10px; /* Внутренний отступ вокруг баннера */
+        }
+
+        /* Центрирование заголовка таблицы */
+        #table-header {
+            text-align: center; /* Центрирует заголовок таблицы */
+        }
+    </style>
+</head>
+<body>
+    <div id="header">Мир Автомобилей</div> <!-- Главный заголовок страницы -->
+
+    <div id="text-block">
+        <img id="car-image" src="https://www.iguides.ru/upload/iblock/bfc/saaj70a20ym53mcmb6mgwq5eiqme71q6.jpg" 
+            alt="Картинка машины" width="250"> <!-- Изображение машины -->
+        <p>Автомобили занимают важную роль в нашей жизни. Они помогают нам перемещаться на большие расстояния с комфортом и скоростью.</p>
+        <p>Сегодня существует множество типов автомобилей, каждый из которых предназначен для определенных целей.</p>
+    </div>
+
+    <h2 id="table-header">Сравнение автомобилей</h2> <!-- Подзаголовок таблицы -->
+
+    <table id="car-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Марка</th>
+                <th onclick="sortTable(1)">Страна</th>
+                <th onclick="sortTable(2)">Мощность (л.с.)</th>
+                <th onclick="sortTable(3)">Цена ($)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>BMW X5</td>
+                <td>Германия</td>
+                <td>340</td>
+                <td>70,000</td>
+            </tr>
+            <tr>
+                <td>Mercedes GLE</td>
+                <td>Германия</td>
+                <td>367</td>
+                <td>75,000</td>
+            </tr>
+            <tr>
+                <td>Tesla Model S</td>
+                <td>США</td>
+                <td>670</td>
+                <td>90,000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="car-banner">
+        <img src="https://cdn.ingos.ru/images/blog/samye-dorogie-avtomobili_shut.jpg" 
+            alt="Баннер с машинами" width="300"> <!-- Изображение баннера -->
+    </div>
+
+    <p>Для получения дополнительной информации <a href="https://example.com" target="_blank">нажмите здесь</a>.</p> <!-- Ссылка для перехода -->
+
+    <ul>
+        <li class="car-list-item"><a class="car-link" href="#">Спорткары</a></li>
+        <li class="car-list-item"><a class="car-link" href="#">Внедорожники</a></li>
+        <li class="car-list-item"><a class="car-link" href="#">Седаны</a></li>
+    </ul>
+
+    <script>
+        // Функция сортировки таблицы
+        function sortTable(n) {
+            let table = document.getElementById("car-table"); // Находим таблицу
+            let rows = Array.from(table.querySelectorAll('tbody tr')); // Получаем все строки таблицы (кроме заголовка)
+            let isAscending = table.rows[0].cells[n].classList.toggle("ascending"); // Переключаем класс "ascending" для заголовка
+
+            // Сортируем строки по выбранному столбцу
+            rows.sort((row1, row2) => {
+                let cell1 = row1.cells[n].innerText; // Получаем текст из первой строки
+                let cell2 = row2.cells[n].innerText; // Получаем текст из второй строки
+                // Если класс "ascending", то сортируем по возрастанию, иначе по убыванию
+                return isAscending ? cell1.localeCompare(cell2) : cell2.localeCompare(cell1); // Сортируем строки таблицы по значению в выбранном столбце
+            });
+
+            // Перемещаем отсортированные строки обратно в таблицу
+            rows.forEach(row => table.querySelector('tbody').appendChild(row)); // Перемещаем отсортированные строки обратно в таблицу
+        }
+
+        // Добавление нового элемента списка
+        const newCarItem = document.createElement('li'); // Создаём новый элемент списка
+        newCarItem.className = 'car-list-item'; // Присваиваем класс
+        newCarItem.innerHTML = '<a class="car-link" href="#">Электромобили</a>'; // Устанавливаем содержимое
+        document.querySelector('ul').appendChild(newCarItem); // Добавляем элемент в список
+
+        // Оповещение при попытке покинуть страницу
+        window.addEventListener('beforeunload', (event) => {
+            event.returnValue = 'Вы уверены, что хотите покинуть сайт? Все несохранённые данные могут быть утеряны.';
+        });
+    </script>
+</body>
+</html>
